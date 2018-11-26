@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+            
+        //loopar programmet så länge inte användaren avbryter eller tills det är klart 
+        while(true){
+            let insattning = prompt("Hur mycker pengar vill du sätta in?");
+            let ar = prompt("Hur många år ska pengarna sitte inne?");
+            
+            if (insattning === null || ar === null){
+                break;
+            }
+            
+            //gör om variablerna till Number för att kunna testa vad användaren angivit
+            insattning = Number(insattning);
+            ar = Number(ar);
+            
+            if(isNaN(insattning) || isNaN(ar)){
+                alert("Vänligen ange bara siffror!")
+                continue;
+            }
+            else {
+                alert(kontoSumma(insattning, ar));
+                break;
+            }        
+            
+        }
+        //beräknar totala belopper per år. 
+        function kontoSumma (insattning, ar) {
+            let ranta = 1.035;
+            let tabell = "";
+            for (let i = 1; i <= ar; i++) {
+                insattning = insattning * ranta;
+                tabell += "År" + i + ": " + insattning.toFixed(2) + "\n";                
+            }
+            return tabell;
+        }
+        
+        </script>
+</body>
+</html>

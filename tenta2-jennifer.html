@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button>Generera lösenord</button>
+    <p></p>
+
+
+    <script>
+
+        let btn = document.getElementsByTagName("button")[0];
+        btn.onclick = generatePassword;
+
+        let password = document.getElementsByTagName("p")[0];
+
+        function generatePassword (){
+            //skapar variabler som innehåller de olika värden som kan slumpas emellan
+            let letters = "abcdefghijklmnopqrstuvwxyz";
+            let lettersUpperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            let specialCHar = "%#.-_?!/@<>+()&$";
+            let passStr = "";
+            
+            //loopar igenom de olika variablerna och väljer tecken genom att slumpa fram siffror.
+            for (let i = 1; i <= 3; i++) {
+                passStr += Math.floor(Math.random()*9)+1;
+                passStr += letters.charAt(Math.floor(Math.random()*26)+1)
+                passStr += specialCHar.charAt(Math.floor(Math.random()*16)+1)
+                passStr += lettersUpperCase.charAt(Math.floor(Math.random()*26)+1)
+            }
+            password.innerHTML = passStr;
+        }
+
+    </script>
+</body>
+</html>
